@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# vim
+*.swp
+
+# Python
+**/.ipynb_checkpoints/
+**/.idea/
+**/__pycache__/
+
