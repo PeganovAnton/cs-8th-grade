@@ -1,0 +1,5 @@
+total 24
+-rwxrwxr-x 1 anton anton 14744 май 30 19:06 a.out
+-rw-rw-r-- 1 anton anton   245 май 30 19:06 file_example.cpp
+-rw-rw-r-- 1 anton anton    12 май 30 19:06 hello_world.txt
+-rw-rw-r-- 1 anton anton     0 май 30 19:07 ls_file.txt
