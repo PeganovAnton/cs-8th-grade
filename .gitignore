@@ -39,3 +39,6 @@
 **/.idea/
 **/__pycache__/
 
+# misc
+cpp/hw28/*/*.txt
+
