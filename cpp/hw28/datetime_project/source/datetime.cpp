@@ -5,6 +5,9 @@
 #include <stdlib.h>
 #include <string>
 
+#include "datetime.hpp"
+#include "itos.hpp"
+
 
 using namespace std;
 
@@ -45,7 +48,7 @@ Date::Date(uint8_t day, uint8_t month, int16_t year)
     year = year;
 }
 
-static uint8_t Date::get_n_days_in_month(uint8_t month, int16_t year)
+uint8_t Date::get_n_days_in_month(uint8_t month, int16_t year)
 {
   string errmsg;
   if (month < 1 || month > n_months_in_year){
@@ -66,7 +69,7 @@ static uint8_t Date::get_n_days_in_month(uint8_t month, int16_t year)
   }
 }
 
-static uint8_t Date::get_n_days_in_february(int16_t year)
+uint8_t Date::get_n_days_in_february(int16_t year)
 {
   string errmsg;
   if (year == 0){

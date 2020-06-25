@@ -6,7 +6,7 @@
 using namespace std;
 
 
-string itos(int64_t i);
+string itos(int64_t);
 
 
 class ValueError: public exception
