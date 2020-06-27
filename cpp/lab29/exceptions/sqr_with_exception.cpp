@@ -66,16 +66,10 @@ int main(int argc, char *argv[])
   // можно бросить повторно, после того, как оно было обработано.
   // В данном случае try..catch используется для проверки того, что на вход
   // было подано нужное количество аргументов.
-  try {
-    if (argc != 2)
+  if (argc != 2)
       // Бросаем специальное исключение, которое сообщает о том, что 
       // приложение получило неправильное количество аргументов.
-      throw WrongNumberOfArgsException(1, argc-1);
-  }catch(const WrongNumberOfArgsException &ex) {
-    cerr << ex.what() << endl;
-    throw;
-  }
-
+    throw WrongNumberOfArgsException(1, argc-1);
   int num = 0;
   num = atoi(argv[1]);
   cout << num * num << endl;
