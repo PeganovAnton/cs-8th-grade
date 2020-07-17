@@ -1,0 +1,28 @@
+CC=g++
+CFLAGS=-c
+EXECUTABLE=a.out
+INCLUDE_DIR=./include
+OBJECT_DIR=build
+SOURCE_FILES=itos.cpp datetime.cpp main.cpp
+HEADER_FILES=itos.hpp datetime.hpp
+OBJECT_FILES=$(SOURCE_FILES:.cpp=.o)
+OBJECTS_WITH_PATHS=$(addprefix $(OBJECT_DIR)/, $(OBJECT_FILES))
+SOURSES_WITH_PATHS=$(addprefix $(SOURCE_DIR)/, $(SOURCE_FILES))
+INCLUDES=-I$(INCLUDE_DIR)
+
+.PHONY: all clean
+
+all: $(EXECUTABLE)
+	echo $(OBJECT_FILES)
+	echo $(OBJECTS_WITH_PATHS)
+
+$(EXECUTABLE): $(OBJECTS_WITH_PATHS) $(OBJECT_DIR)
+    $(CC) $(OBJECTS_WITH_PATHS) -o $@
+
+$(OBJECT_DIR)/%.o: $(SOURCE_DIR)/%.cpp
+    $(CC) $(INCLUDES) $(CFLAGS) $< -o  $@
+
+
+$(OBJECT_DIR):
+    mkdir -p $(OBJECT_DIR)
+
