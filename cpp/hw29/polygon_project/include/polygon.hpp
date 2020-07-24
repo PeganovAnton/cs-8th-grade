@@ -16,4 +16,5 @@ class Polygon
     Point& operator[](size_t);
     const Point& operator[](size_t) const;
     void print(bool = true);
+    ~Polygon();
 };

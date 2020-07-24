@@ -42,3 +42,5 @@
 # misc
 cpp/hw28/*/*.txt
 
+# qt
+**/build-*/
