@@ -44,3 +44,9 @@ cpp/hw28/*/*.txt
 
 # qt
 **/build-*/
+*.pro.user
+
+#jpeg
+*.jpeg~
+
+
