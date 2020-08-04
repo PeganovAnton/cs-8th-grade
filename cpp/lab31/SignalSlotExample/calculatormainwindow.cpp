@@ -1,8 +1,10 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QLCDNumber>
+#include <QSignalMapper>
 
 #include "calculatormainwindow.h"
+
 
 CalculatorMainWindow::CalculatorMainWindow(QWidget *parent)
     : QWidget(parent)
@@ -12,9 +14,11 @@ CalculatorMainWindow::CalculatorMainWindow(QWidget *parent)
     createWidgets();
 }
 
+
 CalculatorMainWindow::~CalculatorMainWindow()
 {
 }
+
 
 void CalculatorMainWindow::createWidgets()
 {
@@ -46,7 +50,6 @@ void CalculatorMainWindow::createWidgets()
     lCalcLayout->addWidget(pushButton_0, 4, 0, 1, 3);
     lCalcLayout->addWidget(pushButtonC, 1, 3);
     lCalcLayout->addWidget(pushButtonPlus, 2, 3, 3, 1);
-
     pushButton_0->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     pushButton_1->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     pushButton_2->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -59,5 +62,51 @@ void CalculatorMainWindow::createWidgets()
     pushButton_9->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     pushButtonPlus->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     pushButtonC->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+
+    signal_mapper = new QSignalMapper(this);
+    connect(pushButton_0, SIGNAL(clicked()), signal_mapper, SLOT(map()), Qt::UniqueConnection);
+    connect(pushButton_1, SIGNAL(clicked()), signal_mapper, SLOT(map()), Qt::UniqueConnection);
+    connect(pushButton_2, SIGNAL(clicked()), signal_mapper, SLOT(map()), Qt::UniqueConnection);
+    connect(pushButton_3, SIGNAL(clicked()), signal_mapper, SLOT(map()), Qt::UniqueConnection);
+    connect(pushButton_4, SIGNAL(clicked()), signal_mapper, SLOT(map()), Qt::UniqueConnection);
+    connect(pushButton_5, SIGNAL(clicked()), signal_mapper, SLOT(map()), Qt::UniqueConnection);
+    connect(pushButton_6, SIGNAL(clicked()), signal_mapper, SLOT(map()), Qt::UniqueConnection);
+    connect(pushButton_7, SIGNAL(clicked()), signal_mapper, SLOT(map()), Qt::UniqueConnection);
+    connect(pushButton_8, SIGNAL(clicked()), signal_mapper, SLOT(map()), Qt::UniqueConnection);
+    connect(pushButton_9, SIGNAL(clicked()), signal_mapper, SLOT(map()), Qt::UniqueConnection);
+    signal_mapper->setMapping(pushButton_0, 0);
+    signal_mapper->setMapping(pushButton_1, 1);
+    signal_mapper->setMapping(pushButton_2, 2);
+    signal_mapper->setMapping(pushButton_3, 3);
+    signal_mapper->setMapping(pushButton_4, 4);
+    signal_mapper->setMapping(pushButton_5, 5);
+    signal_mapper->setMapping(pushButton_6, 6);
+    signal_mapper->setMapping(pushButton_7, 7);
+    signal_mapper->setMapping(pushButton_8, 8);
+    signal_mapper->setMapping(pushButton_9, 9);
+    connect(signal_mapper, SIGNAL(mapped(int)), this, SLOT(slotButtonPressed(int)));
+
+    connect(pushButtonC, SIGNAL(clicked()), this, SLOT(slotClear()), Qt::UniqueConnection);
+    connect(pushButtonPlus, SIGNAL(clicked()), this, SLOT(slotPlusEqual()), Qt::UniqueConnection);
 }
 
+void CalculatorMainWindow::slotClear()
+{
+    lcdNumber->display(0);
+    m_sum = 0;
+    m_next_number = 0;
+}
+
+
+void CalculatorMainWindow::slotButtonPressed(int p_num)
+{
+    m_next_number = p_num;
+    lcdNumber->display(p_num);
+}
+
+
+void CalculatorMainWindow::slotPlusEqual()
+{
+    m_sum += m_next_number;
+    lcdNumber->display(m_sum);
+}

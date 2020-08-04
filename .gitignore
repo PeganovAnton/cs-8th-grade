@@ -45,6 +45,7 @@ cpp/hw28/*/*.txt
 # qt
 **/build-*/
 *.pro.user
+*.autosave
 
 #jpeg
 *.jpeg~

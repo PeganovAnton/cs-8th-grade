@@ -3,6 +3,7 @@
 
 #include <QLCDNumber>
 #include <QPushButton>
+#include <QSignalMapper>
 #include <QWidget>
 
 class CalculatorMainWindow : public QWidget
@@ -30,9 +31,11 @@ private :
     QPushButton *pushButtonPlus;
     QPushButton *pushButtonC;
     QLCDNumber *lcdNumber;
+
+    QSignalMapper *signal_mapper;
   private slots:
     void slotClear();  // Обработка нажатия кнопки сброса
-    void slotButtonPressed(int pNum);  // Нажатие цифровой кнопки
+    void slotButtonPressed(int p_num);  // Нажатие цифровой кнопки
     void slotPlusEqual();  // Обработка кнопки суммирования вывода результата
 };
 #endif // CALCULATORMAINWINDOW_H
