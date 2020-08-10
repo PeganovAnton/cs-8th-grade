@@ -35,7 +35,6 @@ private :
     QLabel *mIconLabel;  //Указатель на метку, которая отображает пиктограмму
     IconVisibilityMode mIconVisibilityMode;  //Режим отображения
     QHBoxLayout *layout;
-    QSpacerItem *spacer_item;
 private slots:
     void slotTextChanged(const QString &pText);
 };
