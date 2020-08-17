@@ -118,10 +118,8 @@ void IconizedLineEdit::setIconVisible(bool pIsVisible)
 
 bool IconizedLineEdit::eventFilter(QObject *p_obj, QEvent *p_event)
 {
-    qDebug() << "eventFilter\n";
     if (is_icon_clickable)
         if (p_obj==mIconLabel && p_event->type()==QEvent::MouseButtonPress){
-            qDebug() << "emit\n";
             emit iconPressed();
             return true;
         }
