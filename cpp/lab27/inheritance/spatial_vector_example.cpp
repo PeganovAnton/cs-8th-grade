@@ -31,7 +31,7 @@ spatial_vector::spatial_vector(double x, double y, double z): vector (x, y)
 }
 
 
-main()
+int main()
 {
   cout << "Создаём вектор на плоскости с координатами 1,2\n";
   vector a(1, 2);
